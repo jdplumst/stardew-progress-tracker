@@ -1,12 +1,8 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getSession } from "~/server/db/queries/auth";
+import { isUnauthed } from "~/server/db/queries/auth";
 
 export default async function LandingPage() {
-  const session = await getSession();
-  if (session) {
-    redirect("/farms");
-  }
+  await isUnauthed();
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-gradient-to-b from-sky-300 to-green-200 p-4">
