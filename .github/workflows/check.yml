@@ -15,4 +15,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Lint and Typecheck
+        env:
+          SKIP_VALIDATION: true
         run: pnpm run check
