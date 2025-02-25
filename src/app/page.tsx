@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-gradient-to-b from-sky-300 to-green-200 p-4">
@@ -16,9 +18,12 @@ export default function Home() {
             all in one place.
           </p>
           <div className="flex justify-center">
-            <button className="rounded bg-green-600 px-4 py-2 font-bold text-white transition duration-300 hover:bg-green-700">
+            <Link
+              href="/signin"
+              className="rounded bg-green-600 px-4 py-2 font-bold text-white transition duration-300 hover:bg-green-700"
+            >
               Start Tracking
-            </button>
+            </Link>
           </div>
         </div>
       </div>
