@@ -1,10 +1,5 @@
+import { sql } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
-
-export const posts = sqliteTable("posts", {
-  id: integer("id").primaryKey(),
-  title: text("title").notNull(),
-  content: text("content"),
-});
 
 // Better Auth Tables
 export const user = sqliteTable("user", {
@@ -62,13 +57,37 @@ export const verification = sqliteTable("verification", {
 });
 
 export const farm = sqliteTable("farm", {
-  id: text("id").primaryKey(),
+  id: text("id")
+    .primaryKey()
+    .default(sql`(random())`),
   name: text("name").notNull(),
   farmMapId: text("farm_map_id")
     .notNull()
     .references(() => farmMap.id, { onDelete: "cascade" }),
-  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
-  updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .notNull()
+    .default(sql`(current_timestamp)`),
+  updatedAt: integer("updated_at", { mode: "timestamp" })
+    .notNull()
+    .default(sql`(current_timestamp)`),
+});
+
+export const farmfish = sqliteTable("farm_fish", {
+  id: text("id")
+    .primaryKey()
+    .default(sql`(random())`),
+  farmId: text("farm_id")
+    .notNull()
+    .references(() => farm.id, { onDelete: "cascade" }),
+  fishId: text("fish_id")
+    .notNull()
+    .references(() => fish.id, { onDelete: "cascade" }),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .notNull()
+    .default(sql`(current_timestamp)`),
+  updatedAt: integer("updated_at", { mode: "timestamp" })
+    .notNull()
+    .default(sql`(current_timestamp)`),
 });
 
 export const farmMap = sqliteTable("farm_map", {
@@ -78,15 +97,21 @@ export const farmMap = sqliteTable("farm_map", {
 });
 
 export const farmUser = sqliteTable("farm_user", {
-  id: text("id").primaryKey(),
+  id: text("id")
+    .primaryKey()
+    .default(sql`(random())`),
   farmId: text("farm_id")
     .notNull()
     .references(() => farm.id, { onDelete: "cascade" }),
   userId: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
-  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
-  updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .notNull()
+    .default(sql`(current_timestamp)`),
+  updatedAt: integer("updated_at", { mode: "timestamp" })
+    .notNull()
+    .default(sql`(current_timestamp)`),
   pending: integer("pending", { mode: "boolean" }).notNull(),
 });
 

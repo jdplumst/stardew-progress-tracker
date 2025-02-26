@@ -15,6 +15,20 @@
       "when": 1740535242426,
       "tag": "0001_farms_and_fishing",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1740540750052,
+      "tag": "0002_random_ids",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1740540855163,
+      "tag": "0003_default_dates",
+      "breakpoints": true
     }
   ]
 }
