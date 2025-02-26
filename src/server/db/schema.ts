@@ -60,3 +60,85 @@ export const verification = sqliteTable("verification", {
   createdAt: integer("created_at", { mode: "timestamp" }),
   updatedAt: integer("updated_at", { mode: "timestamp" }),
 });
+
+export const farm = sqliteTable("farm", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  farmMapId: text("farm_map_id")
+    .notNull()
+    .references(() => farmMap.id, { onDelete: "cascade" }),
+  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
+});
+
+export const farmMap = sqliteTable("farm_map", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  image: text("image"),
+});
+
+export const farmUser = sqliteTable("farm_user", {
+  id: text("id").primaryKey(),
+  farmId: text("farm_id")
+    .notNull()
+    .references(() => farm.id, { onDelete: "cascade" }),
+  userId: text("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
+  pending: integer("pending", { mode: "boolean" }).notNull(),
+});
+
+export const fish = sqliteTable("fish", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  image: text("image"),
+  time: text("time").notNull(),
+  notes: text("notes"),
+});
+
+export const fishLocation = sqliteTable("fish_location", {
+  id: text("id").primaryKey(),
+  fishId: text("fish_id")
+    .notNull()
+    .references(() => fish.id, { onDelete: "cascade" }),
+  locationId: text("location_id")
+    .notNull()
+    .references(() => location.id, { onDelete: "cascade" }),
+});
+
+export const fishSeason = sqliteTable("fish_season", {
+  id: text("id").primaryKey(),
+  fishId: text("fish_id")
+    .notNull()
+    .references(() => fish.id, { onDelete: "cascade" }),
+  seasonId: text("season_id")
+    .notNull()
+    .references(() => season.id, { onDelete: "cascade" }),
+});
+
+export const fishWeather = sqliteTable("fish_weather", {
+  id: text("id").primaryKey(),
+  fishId: text("fish_id")
+    .notNull()
+    .references(() => fish.id, { onDelete: "cascade" }),
+  weatherId: text("weather_id")
+    .notNull()
+    .references(() => weather.id, { onDelete: "cascade" }),
+});
+
+export const location = sqliteTable("location", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+});
+
+export const season = sqliteTable("season", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+});
+
+export const weather = sqliteTable("weather", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+});
