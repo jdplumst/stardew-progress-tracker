@@ -60,7 +60,7 @@ export const verification = sqliteTable("verification", {
 export const farm = sqliteTable("farm", {
   id: text("id").primaryKey().$defaultFn(uuidv4),
   name: text("name").notNull(),
-  farmMapId: text("farm_map_id")
+  farmMapId: integer("farm_map_id")
     .notNull()
     .references(() => farmMap.id, { onDelete: "cascade" }),
   createdAt: integer("created_at", { mode: "timestamp" })
@@ -76,7 +76,7 @@ export const farmfish = sqliteTable("farm_fish", {
   farmId: text("farm_id")
     .notNull()
     .references(() => farm.id, { onDelete: "cascade" }),
-  fishId: text("fish_id")
+  fishId: integer("fish_id")
     .notNull()
     .references(() => fish.id, { onDelete: "cascade" }),
   createdAt: integer("created_at", { mode: "timestamp" })
@@ -120,30 +120,30 @@ export const fish = sqliteTable("fish", {
 
 export const fishLocation = sqliteTable("fish_location", {
   id: text("id").primaryKey().$defaultFn(uuidv4),
-  fishId: text("fish_id")
+  fishId: integer("fish_id")
     .notNull()
     .references(() => fish.id, { onDelete: "cascade" }),
-  locationId: text("location_id")
+  locationId: integer("location_id")
     .notNull()
     .references(() => location.id, { onDelete: "cascade" }),
 });
 
 export const fishSeason = sqliteTable("fish_season", {
   id: text("id").primaryKey().$defaultFn(uuidv4),
-  fishId: text("fish_id")
+  fishId: integer("fish_id")
     .notNull()
     .references(() => fish.id, { onDelete: "cascade" }),
-  seasonId: text("season_id")
+  seasonId: integer("season_id")
     .notNull()
     .references(() => season.id, { onDelete: "cascade" }),
 });
 
 export const fishWeather = sqliteTable("fish_weather", {
   id: text("id").primaryKey().$defaultFn(uuidv4),
-  fishId: text("fish_id")
+  fishId: integer("fish_id")
     .notNull()
     .references(() => fish.id, { onDelete: "cascade" }),
-  weatherId: text("weather_id")
+  weatherId: integer("weather_id")
     .notNull()
     .references(() => weather.id, { onDelete: "cascade" }),
 });

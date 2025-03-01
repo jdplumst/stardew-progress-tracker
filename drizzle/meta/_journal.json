@@ -43,6 +43,13 @@
       "when": 1740815826446,
       "tag": "0005_uuid_defaultfn",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1740817774434,
+      "tag": "0006_int_foreign_keys",
+      "breakpoints": true
     }
   ]
 }
