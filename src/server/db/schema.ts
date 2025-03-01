@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { v4 as uuidv4 } from "uuid";
 
 // Better Auth Tables
 export const user = sqliteTable("user", {
@@ -57,9 +58,7 @@ export const verification = sqliteTable("verification", {
 });
 
 export const farm = sqliteTable("farm", {
-  id: text("id")
-    .primaryKey()
-    .default(sql`(random())`),
+  id: text("id").primaryKey().$defaultFn(uuidv4),
   name: text("name").notNull(),
   farmMapId: text("farm_map_id")
     .notNull()
@@ -73,9 +72,7 @@ export const farm = sqliteTable("farm", {
 });
 
 export const farmfish = sqliteTable("farm_fish", {
-  id: text("id")
-    .primaryKey()
-    .default(sql`(random())`),
+  id: text("id").primaryKey().$defaultFn(uuidv4),
   farmId: text("farm_id")
     .notNull()
     .references(() => farm.id, { onDelete: "cascade" }),
@@ -97,9 +94,7 @@ export const farmMap = sqliteTable("farm_map", {
 });
 
 export const farmUser = sqliteTable("farm_user", {
-  id: text("id")
-    .primaryKey()
-    .default(sql`(random())`),
+  id: text("id").primaryKey().$defaultFn(uuidv4),
   farmId: text("farm_id")
     .notNull()
     .references(() => farm.id, { onDelete: "cascade" }),
@@ -124,7 +119,7 @@ export const fish = sqliteTable("fish", {
 });
 
 export const fishLocation = sqliteTable("fish_location", {
-  id: text("id").primaryKey(),
+  id: text("id").primaryKey().$defaultFn(uuidv4),
   fishId: text("fish_id")
     .notNull()
     .references(() => fish.id, { onDelete: "cascade" }),
@@ -134,7 +129,7 @@ export const fishLocation = sqliteTable("fish_location", {
 });
 
 export const fishSeason = sqliteTable("fish_season", {
-  id: text("id").primaryKey(),
+  id: text("id").primaryKey().$defaultFn(uuidv4),
   fishId: text("fish_id")
     .notNull()
     .references(() => fish.id, { onDelete: "cascade" }),
@@ -144,7 +139,7 @@ export const fishSeason = sqliteTable("fish_season", {
 });
 
 export const fishWeather = sqliteTable("fish_weather", {
-  id: text("id").primaryKey(),
+  id: text("id").primaryKey().$defaultFn(uuidv4),
   fishId: text("fish_id")
     .notNull()
     .references(() => fish.id, { onDelete: "cascade" }),

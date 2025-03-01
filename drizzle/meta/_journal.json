@@ -36,6 +36,13 @@
       "when": 1740805316869,
       "tag": "0004_int_pk",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1740815826446,
+      "tag": "0005_uuid_defaultfn",
+      "breakpoints": true
     }
   ]
 }
