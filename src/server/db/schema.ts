@@ -91,7 +91,7 @@ export const farmfish = sqliteTable("farm_fish", {
 });
 
 export const farmMap = sqliteTable("farm_map", {
-  id: text("id").primaryKey(),
+  id: integer("id").primaryKey(),
   name: text("name").notNull(),
   image: text("image"),
 });
@@ -116,7 +116,7 @@ export const farmUser = sqliteTable("farm_user", {
 });
 
 export const fish = sqliteTable("fish", {
-  id: text("id").primaryKey(),
+  id: integer("id").primaryKey(),
   name: text("name").notNull(),
   image: text("image"),
   time: text("time").notNull(),
@@ -154,16 +154,16 @@ export const fishWeather = sqliteTable("fish_weather", {
 });
 
 export const location = sqliteTable("location", {
-  id: text("id").primaryKey(),
+  id: integer("id").primaryKey(),
   name: text("name").notNull(),
 });
 
 export const season = sqliteTable("season", {
-  id: text("id").primaryKey(),
+  id: integer("id").primaryKey(),
   name: text("name").notNull(),
 });
 
 export const weather = sqliteTable("weather", {
-  id: text("id").primaryKey(),
+  id: integer("id").primaryKey(),
   name: text("name").notNull(),
 });
