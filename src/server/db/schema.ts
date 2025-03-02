@@ -65,10 +65,10 @@ export const farm = sqliteTable("farm", {
     .references(() => farmMap.id, { onDelete: "cascade" }),
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
-    .default(sql`(current_timestamp)`),
+    .$defaultFn(() => new Date()),
   updatedAt: integer("updated_at", { mode: "timestamp" })
     .notNull()
-    .default(sql`(current_timestamp)`),
+    .$defaultFn(() => new Date()),
 });
 
 export const farmfish = sqliteTable("farm_fish", {
@@ -81,10 +81,10 @@ export const farmfish = sqliteTable("farm_fish", {
     .references(() => fish.id, { onDelete: "cascade" }),
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
-    .default(sql`(current_timestamp)`),
+    .$defaultFn(() => new Date()),
   updatedAt: integer("updated_at", { mode: "timestamp" })
     .notNull()
-    .default(sql`(current_timestamp)`),
+    .$defaultFn(() => new Date()),
 });
 
 export const farmMap = sqliteTable("farm_map", {
@@ -103,10 +103,10 @@ export const farmUser = sqliteTable("farm_user", {
     .references(() => user.id, { onDelete: "cascade" }),
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
-    .default(sql`(current_timestamp)`),
+    .$defaultFn(() => new Date()),
   updatedAt: integer("updated_at", { mode: "timestamp" })
     .notNull()
-    .default(sql`(current_timestamp)`),
+    .$defaultFn(() => new Date()),
   pending: integer("pending", { mode: "boolean" }).notNull(),
 });
 

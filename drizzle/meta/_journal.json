@@ -50,6 +50,13 @@
       "when": 1740817774434,
       "tag": "0006_int_foreign_keys",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1740936444511,
+      "tag": "0007_js_dates",
+      "breakpoints": true
     }
   ]
 }
