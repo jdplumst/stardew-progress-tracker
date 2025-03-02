@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FarmForm } from "~/components/farm-form";
 import { Button } from "~/components/ui/button";
 import {
@@ -19,9 +20,7 @@ export default async function FarmsPage() {
   return (
     <div className="p-6">
       <div className="mx-auto max-w-6xl">
-        <h1 className="text-brown-700 font-stardew mb-6 text-4xl font-bold">
-          Your Farms
-        </h1>
+        <h1 className="mb-6 text-4xl font-bold">Your Farms</h1>
         <FarmForm maps={maps} />
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {farms
@@ -38,9 +37,7 @@ export default async function FarmsPage() {
                 className="bg-white bg-opacity-80 backdrop-blur-sm transition-shadow duration-300 hover:shadow-lg"
               >
                 <CardHeader>
-                  <CardTitle className="font-stardew text-brown-700">
-                    {farm.farm.name}
-                  </CardTitle>
+                  <CardTitle>{farm.farm.name}</CardTitle>
                   <CardDescription>
                     Owned by {farm.user.map((user) => user.name).join(", ")}
                   </CardDescription>
@@ -51,9 +48,11 @@ export default async function FarmsPage() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="outline" className="font-stardew w-full">
-                    View Farm
-                  </Button>
+                  <Link href={`/farms/${farm.farm.id}`} className="w-full">
+                    <Button variant="outline" className="w-full">
+                      View Farm
+                    </Button>
+                  </Link>
                 </CardFooter>
               </Card>
             ))}

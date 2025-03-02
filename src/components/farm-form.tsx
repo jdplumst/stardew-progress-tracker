@@ -24,7 +24,7 @@ import {
 import { createFarmAction } from "~/server/actions/farms";
 import { type farmMap } from "~/server/db/schema";
 
-export function FarmForm({ maps }: { maps: (typeof farmMap.$inferSelect)[] }) {
+export function FarmForm(props: { maps: (typeof farmMap.$inferSelect)[] }) {
   const [data, formAction, isPending] = useActionState(
     createFarmAction,
     undefined,
@@ -46,7 +46,7 @@ export function FarmForm({ maps }: { maps: (typeof farmMap.$inferSelect)[] }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="font-stardew mb-6 bg-green-600 text-white hover:bg-green-700">
+        <Button className="mb-6 bg-green-600 text-white hover:bg-green-700">
           Create New Farm
         </Button>
       </DialogTrigger>
@@ -83,11 +83,11 @@ export function FarmForm({ maps }: { maps: (typeof farmMap.$inferSelect)[] }) {
                 id="map"
                 className="max-h-[300px] overflow-y-scroll"
               >
-                {maps.map((map) => (
+                {props.maps.map((map) => (
                   <SelectItem key={map.id} value={map.id.toString()}>
                     <div className="flex items-center gap-2">
                       <Image
-                        src={map.image!}
+                        src={map.image}
                         alt={map.name}
                         width={25}
                         height={25}
