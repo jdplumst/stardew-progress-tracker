@@ -44,5 +44,7 @@ export async function getFarms() {
     }
   }
 
-  return formattedFarmData;
+  const farmMaps = await db.select().from(farmMap);
+
+  return { farms: formattedFarmData, maps: farmMaps };
 }
