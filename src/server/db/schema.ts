@@ -1,4 +1,3 @@
-import { sql } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { v4 as uuidv4 } from "uuid";
 
@@ -90,7 +89,7 @@ export const farmfish = sqliteTable("farm_fish", {
 export const farmMap = sqliteTable("farm_map", {
   id: integer("id").primaryKey(),
   name: text("name").notNull(),
-  image: text("image"),
+  image: text("image").notNull(),
 });
 
 export const farmUser = sqliteTable("farm_user", {

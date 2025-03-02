@@ -57,6 +57,13 @@
       "when": 1740936444511,
       "tag": "0007_js_dates",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1740949497610,
+      "tag": "0008_not_null_farm_map_img",
+      "breakpoints": true
     }
   ]
 }
