@@ -1,6 +1,5 @@
-import { redirect } from "next/navigation";
 import { SignIn } from "~/components/sign-in";
-import { getSession, isUnauthed } from "~/server/db/queries/auth";
+import { isUnauthed } from "~/server/db/queries/auth";
 
 export default async function SignInPage() {
   await isUnauthed();

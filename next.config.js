@@ -6,19 +6,27 @@ import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
 const config = {
-    async headers() {
-        return [
+  // eslint-disable-next-line @typescript-eslint/require-await
+  async headers() {
+    return [
+      {
+        source: "/api/:path*",
+        headers: [
           {
-            source: "/api/:path*",
-            headers: [
-              {
-                key: "Netlify-CDN-Cache-Control",
-                value: "public, max-age=0, must-revalidate",
-              },
-            ],
+            key: "Netlify-CDN-Cache-Control",
+            value: "public, max-age=0, must-revalidate",
           },
-        ];
+        ],
       },
+    ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "stardewvalleywiki.com",
+      },
+    ],
+  },
 };
 
 export default config;

@@ -1,3 +1,4 @@
+import { FarmForm } from "~/components/farm-form";
 import { Button } from "~/components/ui/button";
 import {
   Card,
@@ -7,10 +8,13 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
+import { prettyDate } from "~/lib/pretty-date";
+import { isAuthed } from "~/server/db/queries/auth";
 import { getFarms } from "~/server/db/queries/farms";
 
 export default async function FarmsPage() {
-  const farms = await getFarms();
+  const auth = await isAuthed();
+  const { farms, maps } = await getFarms();
 
   return (
     <div className="p-6">
@@ -18,13 +22,15 @@ export default async function FarmsPage() {
         <h1 className="text-brown-700 font-stardew mb-6 text-4xl font-bold">
           Your Farms
         </h1>
-        <Button className="font-stardew mb-6 bg-green-600 text-white hover:bg-green-700">
-          Create New Farm
-        </Button>
+        <FarmForm maps={maps} />
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {farms
             .filter((farm) =>
-              farm.farmUser.some((farmUser) => farmUser.pending === false),
+              farm.farmUser.some(
+                (farmUser) =>
+                  farmUser.userId === auth.session.userId &&
+                  farmUser.pending === false,
+              ),
             )
             .map((farm) => (
               <Card
@@ -41,7 +47,7 @@ export default async function FarmsPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-green-800">
-                    Last Updated: {farm.farm.updatedAt.toLocaleDateString()}
+                    Last Updated: {prettyDate(new Date(farm.farm.updatedAt))}
                   </p>
                 </CardContent>
                 <CardFooter>
