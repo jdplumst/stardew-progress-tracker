@@ -40,7 +40,6 @@ export async function createFarm(data: {
   });
 
   revalidatePath("/farms");
-  console.log("Farm created successfully.");
 
   return { success: true, message: "Farm created successfully." };
 }

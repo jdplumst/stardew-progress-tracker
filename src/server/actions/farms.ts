@@ -20,7 +20,6 @@ export async function createFarmAction(
 
   const input = formSchema.safeParse(Object.fromEntries(formData));
   if (input.error) {
-    console.error(input.error.message);
     return {
       success: false,
       error:
