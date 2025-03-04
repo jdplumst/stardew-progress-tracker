@@ -41,7 +41,6 @@ export async function inviteUserAction(
 
   const input = formSchema.safeParse(Object.fromEntries(formData));
   if (input.error) {
-    console.log("Input error:", input.error);
     return {
       success: false,
       error: "You must enter a username",

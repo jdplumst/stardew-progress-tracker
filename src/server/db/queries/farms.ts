@@ -1,6 +1,6 @@
 import "server-only";
 
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { db } from "~/server/db";
 import { isAuthed } from "~/server/db/queries/auth";
 import { farm, farmMap, farmUser, user } from "~/server/db/schema";
@@ -16,7 +16,8 @@ export async function getFarms() {
     .leftJoin(farmMap, eq(farm.farmMapId, farmMap.id))
     .leftJoin(user, eq(farmUser.userId, user.id))
     .where(eq(farmUser.userId, auth.session.userId))
-    .groupBy(farm.id);
+    .groupBy(farm.id)
+    .orderBy(desc(farm.updatedAt));
 
   type FormattedFarmData = {
     farm: typeof farm.$inferSelect;
