@@ -6,6 +6,7 @@ import { farm, farmMap, farmUser, user } from "~/server/db/schema";
 import { type ErrorResponse, type MessageResponse } from "~/lib/types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+
 export async function createFarm(
   name: string,
   map: number,
@@ -67,6 +68,27 @@ export async function inviteUser(
 
   if (!invitedUser) {
     return { success: false, error: "User not found" };
+  }
+
+  if (invitedUser.id === userId) {
+    return { success: false, error: "You cannot invite yourself" };
+  }
+
+  const existingFarmUser = (
+    await db
+      .select()
+      .from(farmUser)
+      .where(
+        and(eq(farmUser.userId, invitedUser.id), eq(farmUser.farmId, farmId)),
+      )
+  )[0];
+
+  if (existingFarmUser?.pending) {
+    return { success: false, error: "User already invited to this farm" };
+  }
+
+  if (existingFarmUser) {
+    return { success: false, error: "User already in farm" };
   }
 
   await db.insert(farmUser).values({
