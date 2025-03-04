@@ -46,7 +46,7 @@ export function FarmForm(props: { maps: (typeof farmMap.$inferSelect)[] }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="mb-6 bg-green-600 text-white hover:bg-green-700">
+        <Button className="mb-6 w-fit bg-green-600 text-white hover:bg-green-700">
           Create New Farm
         </Button>
       </DialogTrigger>
