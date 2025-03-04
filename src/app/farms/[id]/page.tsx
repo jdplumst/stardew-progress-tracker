@@ -7,6 +7,7 @@ import { Card } from "~/components/ui/card";
 import { getFarm } from "~/server/db/queries/farms";
 import { prettyDate } from "~/lib/pretty-date";
 import Image from "next/image";
+import { InviteForm } from "~/components/invite-form";
 
 export default async function FarmPage(props: {
   params: Promise<{ id: string }>;
@@ -16,11 +17,9 @@ export default async function FarmPage(props: {
 
   return (
     <div className="p-6">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6">
         <Link href="/farms">
-          <Button variant="outline" className="mb-6">
-            ← Back to Farms
-          </Button>
+          <Button variant="outline">← Back to Farms</Button>
         </Link>
         <Card className="bg-white bg-opacity-80 backdrop-blur-sm">
           <CardHeader>
@@ -52,6 +51,7 @@ export default async function FarmPage(props: {
             </div>
           </CardContent>
         </Card>
+        <InviteForm farmId={id} />
       </div>
     </div>
   );
