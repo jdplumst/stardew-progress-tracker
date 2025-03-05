@@ -24,7 +24,9 @@ import {
 import { createFarmAction } from "~/server/actions/farms";
 import { type farmMap } from "~/server/db/schema";
 
-export function FarmForm(props: { maps: (typeof farmMap.$inferSelect)[] }) {
+export function CreateFarmForm(props: {
+  maps: (typeof farmMap.$inferSelect)[];
+}) {
   const [data, formAction, isPending] = useActionState(
     createFarmAction,
     undefined,
@@ -66,7 +68,7 @@ export function FarmForm(props: { maps: (typeof farmMap.$inferSelect)[] }) {
               id="farm-name"
               name="name"
               maxLength={30}
-              className={`${!data?.success ? "border-red-500" : ""}`}
+              className={`${data?.success === false ? "border-red-500" : ""}`}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -75,7 +77,7 @@ export function FarmForm(props: { maps: (typeof farmMap.$inferSelect)[] }) {
             </label>
             <Select name="map">
               <SelectTrigger
-                className={`${!data?.success ? "border-red-500" : ""}`}
+                className={`${data?.success === false ? "border-red-500" : ""}`}
               >
                 <SelectValue placeholder="Select Map" />
               </SelectTrigger>

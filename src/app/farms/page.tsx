@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AcceptInviteForm } from "~/components/accept-invite-form";
 import { DeclineInviteForm } from "~/components/decline-invite-form";
-import { FarmForm } from "~/components/farm-form";
+import { CreateFarmForm } from "~/components/create-farm-form";
 import { Button } from "~/components/ui/button";
 import {
   Card,
@@ -23,7 +23,7 @@ export default async function FarmsPage() {
     <div className="p-6">
       <div className="mx-auto flex max-w-6xl flex-col gap-6">
         <h1 className="text-4xl font-bold">Your Farms</h1>
-        <FarmForm maps={maps} />
+        <CreateFarmForm maps={maps} />
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {farms
             .filter((farm) =>
