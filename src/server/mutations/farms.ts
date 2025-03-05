@@ -169,3 +169,33 @@ export async function declineInvite(
 
   return { success: true, message: "Invite declined successfully" };
 }
+
+export async function leaveFarm(farmId: string, userId: string) {
+  const farmData = await db.select().from(farm).where(eq(farm.id, farmId));
+  if (!farmData) {
+    redirect("/farms");
+  }
+
+  const farmUserData = (
+    await db
+      .select()
+      .from(farmUser)
+      .where(and(eq(farmUser.userId, userId), eq(farmUser.farmId, farmId)))
+  )[0];
+  if (!farmUserData) {
+    redirect("/farms");
+  }
+
+  await db.delete(farmUser).where(eq(farmUser.id, farmUserData.id));
+
+  // Delete farm if no users are left
+  const farmUsers = await db
+    .select()
+    .from(farmUser)
+    .where(eq(farmUser.farmId, farmId));
+  if (farmUsers.length === 0) {
+    await db.delete(farm).where(eq(farm.id, farmId));
+  }
+
+  redirect("/farms");
+}

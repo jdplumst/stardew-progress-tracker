@@ -7,6 +7,7 @@ import {
   createFarm,
   declineInvite,
   inviteUser,
+  leaveFarm,
 } from "~/server/mutations/farms";
 import { type ErrorResponse, type MessageResponse } from "~/lib/types";
 import { redirect } from "next/navigation";
@@ -90,4 +91,22 @@ export async function declineInviteAction(
   }
 
   return await declineInvite(input.data.farmId, auth.user.id);
+}
+
+export async function leaveFarmAction(
+  _previousState: unknown,
+  formData: FormData,
+) {
+  const auth = await isAuthed();
+
+  const formSchema = z.object({
+    farmId: z.string().min(1),
+  });
+
+  const input = formSchema.safeParse(Object.fromEntries(formData));
+  if (input.error) {
+    redirect("/farms");
+  }
+
+  return await leaveFarm(input.data.farmId, auth.user.id);
 }

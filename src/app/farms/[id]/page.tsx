@@ -8,6 +8,7 @@ import { getFarm } from "~/server/db/queries/farms";
 import { prettyDate } from "~/lib/pretty-date";
 import Image from "next/image";
 import { InviteForm } from "~/components/invite-form";
+import { LeaveFarmButton } from "~/components/leave-farm-button";
 
 export default async function FarmPage(props: {
   params: Promise<{ id: string }>;
@@ -52,6 +53,7 @@ export default async function FarmPage(props: {
           </CardContent>
         </Card>
         <InviteForm farmId={id} />
+        <LeaveFarmButton farmId={id} />
       </div>
     </div>
   );
