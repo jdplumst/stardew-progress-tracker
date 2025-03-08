@@ -29,7 +29,7 @@ export function InviteForm(props: { farmId: string }) {
     <Card className="bg-white bg-opacity-80 backdrop-blur-sm dark:text-black">
       <CardHeader>
         <CardTitle className="text-xl">Invite Friends to Your Farm</CardTitle>
-        <CardDescription>
+        <CardDescription className="text-black">
           Share your farming adventure with friends!
         </CardDescription>
       </CardHeader>
@@ -41,7 +41,7 @@ export function InviteForm(props: { farmId: string }) {
               name="username"
               placeholder="Enter username"
               required
-              className="flex-grow"
+              className="flex-grow dark:placeholder-gray-700"
             />
             <Input type="hidden" name="farmId" value={props.farmId} />
             <Button type="submit" disabled={isPending}>

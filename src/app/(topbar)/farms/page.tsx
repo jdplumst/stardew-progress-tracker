@@ -40,7 +40,7 @@ export default async function FarmsPage() {
               >
                 <CardHeader>
                   <CardTitle>{farm.farm.name}</CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-black">
                     Owned by {farm.user.map((user) => user.name).join(", ")}
                   </CardDescription>
                 </CardHeader>
