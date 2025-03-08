@@ -36,7 +36,7 @@ export default async function FarmsPage() {
             .map((farm) => (
               <Card
                 key={farm.farm.id}
-                className="bg-white bg-opacity-80 backdrop-blur-sm transition-shadow duration-300 hover:shadow-lg"
+                className="bg-white bg-opacity-80 backdrop-blur-sm transition-shadow duration-300 hover:shadow-lg dark:text-black"
               >
                 <CardHeader>
                   <CardTitle>{farm.farm.name}</CardTitle>
@@ -51,7 +51,10 @@ export default async function FarmsPage() {
                 </CardContent>
                 <CardFooter>
                   <Link href={`/farms/${farm.farm.id}`} className="w-full">
-                    <Button variant="outline" className="w-full">
+                    <Button
+                      variant="outline"
+                      className="w-full dark:text-white"
+                    >
                       View Farm
                     </Button>
                   </Link>

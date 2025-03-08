@@ -26,7 +26,7 @@ export function InviteForm(props: { farmId: string }) {
   }, [data]);
 
   return (
-    <Card className="bg-white bg-opacity-80 backdrop-blur-sm">
+    <Card className="bg-white bg-opacity-80 backdrop-blur-sm dark:text-black">
       <CardHeader>
         <CardTitle className="text-xl">Invite Friends to Your Farm</CardTitle>
         <CardDescription>

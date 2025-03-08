@@ -22,7 +22,7 @@ export default async function FarmPage(props: {
         <Link href="/farms">
           <Button variant="outline">← Back to Farms</Button>
         </Link>
-        <Card className="bg-white bg-opacity-80 backdrop-blur-sm">
+        <Card className="bg-white bg-opacity-80 backdrop-blur-sm dark:text-black">
           <CardHeader>
             <CardTitle className="text-3xl">{farmData.farm.name}</CardTitle>
             <CardDescription>

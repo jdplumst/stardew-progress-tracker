@@ -11,8 +11,8 @@ export default async function LandingPage() {
         <div className="absolute left-[-50px] top-[-50px] h-32 w-32 animate-pulse rounded-full bg-yellow-300 opacity-75"></div>
 
         {/* Content area */}
-        <div className="relative rounded-lg bg-white bg-opacity-80 p-8 shadow-lg backdrop-blur-sm">
-          <h1 className="text-brown-700 mb-4 text-center text-4xl font-bold md:text-5xl">
+        <div className="relative rounded-lg bg-white bg-opacity-80 p-8 shadow-lg backdrop-blur-sm dark:text-black">
+          <h1 className="mb-4 text-center text-4xl font-bold md:text-5xl">
             Stardew Valley Progress Tracker
           </h1>
           <p className="mb-6 text-center text-lg text-green-800">

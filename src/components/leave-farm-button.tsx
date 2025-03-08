@@ -22,7 +22,7 @@ export function LeaveFarmButton(props: { farmId: string }) {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="w-fit flex-1 border-red-600 text-red-600 hover:bg-red-50"
+          className="w-fit flex-1 border-red-600 text-red-600 hover:bg-red-50 hover:dark:bg-red-500"
         >
           Leave Farm
         </Button>

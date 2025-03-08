@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { isAuthed } from "~/server/db/queries/auth";
+import { ThemeToggle } from "./theme-toggle";
 
 export async function Topbar() {
   const auth = await isAuthed();
@@ -7,5 +8,10 @@ export async function Topbar() {
     redirect("/");
   }
 
-  return <div className="w-full p-4 shadow-lg">Hi {auth.user.name}</div>;
+  return (
+    <div className="flex w-full items-center justify-between p-4 shadow-lg">
+      <span>Hi {auth.user.name}</span>
+      <ThemeToggle />
+    </div>
+  );
 }
