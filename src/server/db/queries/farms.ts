@@ -83,3 +83,15 @@ export async function getFarm(id: string) {
 
   return { farmData, farmUserData };
 }
+
+export async function getFarmName(farmId: string) {
+  const farmName = (
+    await db.select({ name: farm.name }).from(farm).where(eq(farm.id, farmId))
+  )[0];
+
+  if (!farmName) {
+    redirect("/farms");
+  }
+
+  return farmName;
+}

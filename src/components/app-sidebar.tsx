@@ -10,14 +10,17 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "~/components/ui/sidebar";
+import { getFarmName } from "~/server/db/queries/farms";
 
-export function AppSidebar() {
+export async function AppSidebar(props: { farmId: string }) {
+  const { name } = await getFarmName(props.farmId);
+
   return (
     <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-lg font-bold">
-            Farm Name
+            {name}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
