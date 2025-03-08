@@ -8,7 +8,7 @@ import {
   declineInvite,
   inviteUser,
   leaveFarm,
-} from "~/server/mutations/farms";
+} from "~/server/db/mutations/farms";
 import { type ErrorResponse, type MessageResponse } from "~/lib/types";
 import { redirect } from "next/navigation";
 
