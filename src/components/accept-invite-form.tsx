@@ -11,10 +11,8 @@ export function AcceptInviteForm(props: { farmId: string }) {
   const [data, action, isPending] = useActionState(acceptInviteAction, null);
 
   useEffect(() => {
-    if (data) {
-      if (data.success) {
-        toast.success(data.message);
-      }
+    if (data?.success) {
+      toast.success(data.message);
     }
   }, [data]);
 

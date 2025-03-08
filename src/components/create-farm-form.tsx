@@ -35,13 +35,11 @@ export function CreateFarmForm(props: {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (data) {
-      if (data.success) {
-        toast.success(data.message);
-        setOpen(false);
-      } else if (data.error) {
-        toast.error(data.error);
-      }
+    if (data?.success) {
+      toast.success(data.message);
+      setOpen(false);
+    } else if (data?.error) {
+      toast.error(data.error);
     }
   }, [data]);
 

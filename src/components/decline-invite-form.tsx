@@ -12,10 +12,8 @@ export function DeclineInviteForm(props: { farmId: string }) {
   const [data, action, isPending] = useActionState(declineInviteAction, null);
 
   useEffect(() => {
-    if (data) {
-      if (data.success) {
-        toast.success(data.message);
-      }
+    if (data?.success) {
+      toast.success(data.message);
     }
   }, [data]);
 
