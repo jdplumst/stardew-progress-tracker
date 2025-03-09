@@ -17,6 +17,8 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarTrigger />
+        </SidebarGroup>
+        <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem key="fish">
