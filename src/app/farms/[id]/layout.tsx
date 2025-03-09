@@ -1,20 +1,16 @@
 import { AppSidebar } from "~/components/app-sidebar";
 import { Topbar } from "~/components/topbar";
-import { SidebarProvider, SidebarTrigger } from "~/components/ui/sidebar";
+import { SidebarProvider } from "~/components/ui/sidebar";
 
-export default async function SidebarLayout({
+export default function SidebarLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ id: string }>;
 }) {
-  const { id } = await params;
   return (
     <SidebarProvider>
-      <AppSidebar farmId={id} />
+      <AppSidebar />
       <main className="w-full">
-        <SidebarTrigger />
         <Topbar />
         {children}
       </main>

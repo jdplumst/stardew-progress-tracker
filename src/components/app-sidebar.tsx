@@ -5,23 +5,18 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarTrigger,
 } from "~/components/ui/sidebar";
-import { getFarmName } from "~/server/db/queries/farms";
 
-export async function AppSidebar(props: { farmId: string }) {
-  const { name } = await getFarmName(props.farmId);
-
+export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-lg font-bold">
-            {name}
-          </SidebarGroupLabel>
+          <SidebarTrigger />
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem key="fish">
