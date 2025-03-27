@@ -70,7 +70,7 @@ export const farm = sqliteTable("farm", {
     .$defaultFn(() => new Date()),
 });
 
-export const farmfish = sqliteTable("farm_fish", {
+export const farmFish = sqliteTable("farm_fish", {
   id: text("id").primaryKey().$defaultFn(uuidv4),
   farmId: text("farm_id")
     .notNull()
