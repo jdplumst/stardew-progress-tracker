@@ -13,10 +13,10 @@ export function prettyDate(date: Date) {
     "November",
     "December",
   ];
-  const monthIdx = date.getMonth();
+  const monthIdx = date.getUTCMonth();
   const month = months[monthIdx];
-  const day = date.getDate();
-  const year = date.getFullYear();
+  const day = date.getUTCDate();
+  const year = date.getUTCFullYear();
 
   return `${month} ${day}, ${year}`;
 }
