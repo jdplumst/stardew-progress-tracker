@@ -7,13 +7,14 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table";
+import { CatchSelect } from "~/components/catch-select";
 
 export default async function FishPage(props: {
   params: Promise<{ id: string }>;
 }) {
   const { id } = await props.params;
 
-  const { fish, farmFish } = await getFarmFish(id);
+  const farmFish = await getFarmFish(id);
 
   return (
     <div>
@@ -27,14 +28,14 @@ export default async function FishPage(props: {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {fish.map((f) => (
+          {farmFish.fish.map((f) => (
             <TableRow key={f.id}>
               <TableCell className="flex items-center gap-2">
                 {f.name}{" "}
                 <img src={f.image!} alt={f.name} height={10} width={20} />
               </TableCell>
               <TableCell>
-                {farmFish.find((ff) => ff.fishId == f.id) ? "Yes ✅" : "No ❌"}
+                <CatchSelect farmId={id} fishId={f.id} farmFish={farmFish} />
               </TableCell>
               <TableCell>{f.time}</TableCell>
               <TableCell className="w-1/2">{f.notes}</TableCell>
