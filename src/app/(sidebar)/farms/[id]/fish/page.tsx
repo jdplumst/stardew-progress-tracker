@@ -17,7 +17,7 @@ export default async function FishPage(props: {
   const farmFish = await getFarmFish(id);
 
   return (
-    <div>
+    <>
       <Table>
         <TableHeader>
           <TableRow>
@@ -43,6 +43,6 @@ export default async function FishPage(props: {
           ))}
         </TableBody>
       </Table>
-    </div>
+    </>
   );
 }
