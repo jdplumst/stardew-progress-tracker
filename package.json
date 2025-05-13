@@ -25,7 +25,7 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "@libsql/client": "^0.14.0",
+    "@libsql/client": "^0.15.0",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-dropdown-menu": "^2.1.6",
     "@radix-ui/react-select": "^2.1.6",
